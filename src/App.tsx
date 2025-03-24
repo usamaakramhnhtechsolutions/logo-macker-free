@@ -250,19 +250,21 @@ function App() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div className="flex items-center justify-between px-4 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold text-gray-900">Free Logo Maker</h1>
+          <h1>Phone: <a href="tel:+923153799709">+92 315 3799 709</a></h1>
+
           <div className="flex gap-4">
             <button 
               onClick={() => setStep(Math.max(1, step - 1))}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 flex items-center gap-2"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
             >
               <ChevronLeft size={16} />
               Previous
             </button>
             <button 
               onClick={() => setStep(Math.min(4, step + 1))}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 flex items-center gap-2"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
             >
               Next
               <ChevronRight size={16} />
@@ -271,10 +273,10 @@ function App() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+      <main className="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
         {/* Steps */}
         <div className="mb-8">
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             {['Choose Industry', 'Select Template', 'Customize Design', 'Download'].map((text, index) => (
               <div 
                 key={text} 
@@ -296,12 +298,12 @@ function App() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Logo Preview */}
           <div className="lg:col-span-2">
             <div 
               ref={logoRef}
-              className="aspect-video rounded-lg shadow-lg flex items-center justify-center p-12"
+              className="flex items-center justify-center p-12 rounded-lg shadow-lg aspect-video"
               style={{ backgroundColor: settings.backgroundColor }}
             >
               <div 
@@ -340,7 +342,7 @@ function App() {
                       letterSpacing: `${settings.letterSpacing * 0.8}px`,
                       lineHeight: settings.lineHeight
                     }}
-                    className="text-sm font-medium mt-2"
+                    className="mt-2 text-sm font-medium"
                   >
                     {settings.slogan}
                   </span>
@@ -350,10 +352,10 @@ function App() {
           </div>
 
           {/* Controls */}
-          <div className="space-y-6 bg-white p-6 rounded-lg shadow">
+          <div className="p-6 space-y-6 bg-white rounded-lg shadow">
             {step === 1 && (
               <div>
-                <h3 className="text-lg font-medium mb-4">Select Your Industry</h3>
+                <h3 className="mb-4 text-lg font-medium">Select Your Industry</h3>
                 <div className="grid grid-cols-3 gap-4">
                   {industries.map((industry) => {
                     const Icon = industry.icon;
@@ -382,7 +384,7 @@ function App() {
 
             {step === 2 && (
               <div>
-                <h3 className="text-lg font-medium mb-4">Choose a Template</h3>
+                <h3 className="mb-4 text-lg font-medium">Choose a Template</h3>
                 <div className="space-y-4">
                   {templates.map((template) => (
                     <button
@@ -409,7 +411,7 @@ function App() {
                           {template.colors.map((color, i) => (
                             <div
                               key={i}
-                              className="w-6 h-6 rounded-full border border-gray-200"
+                              className="w-6 h-6 border border-gray-200 rounded-full"
                               style={{ backgroundColor: color }}
                             />
                           ))}
@@ -425,7 +427,7 @@ function App() {
               <>
                 {/* Text Settings */}
                 <div>
-                  <h3 className="text-lg font-medium flex items-center gap-2">
+                  <h3 className="flex items-center gap-2 text-lg font-medium">
                     <Type size={20} /> Text Settings
                   </h3>
                   <div className="mt-3 space-y-4">
@@ -435,7 +437,7 @@ function App() {
                         type="text"
                         value={settings.text}
                         onChange={(e) => setSettings({ ...settings, text: e.target.value })}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                       />
                     </div>
                     <div>
@@ -444,7 +446,7 @@ function App() {
                         type="text"
                         value={settings.slogan}
                         onChange={(e) => setSettings({ ...settings, slogan: e.target.value })}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                       />
                     </div>
                     <div>
@@ -452,7 +454,7 @@ function App() {
                       <select
                         value={settings.fontFamily}
                         onChange={(e) => setSettings({ ...settings, fontFamily: e.target.value })}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                       >
                         {fontFamilies.map(font => (
                           <option key={font} value={font}>{font.split(',')[0]}</option>
@@ -467,7 +469,7 @@ function App() {
                         max="72"
                         value={settings.fontSize}
                         onChange={(e) => setSettings({ ...settings, fontSize: Number(e.target.value) })}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                       />
                     </div>
                     <div>
@@ -479,7 +481,7 @@ function App() {
                         step="0.1"
                         value={settings.letterSpacing}
                         onChange={(e) => setSettings({ ...settings, letterSpacing: Number(e.target.value) })}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                       />
                     </div>
                     <div>
@@ -491,7 +493,7 @@ function App() {
                         step="0.1"
                         value={settings.lineHeight}
                         onChange={(e) => setSettings({ ...settings, lineHeight: Number(e.target.value) })}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                       />
                     </div>
                     <div>
@@ -500,7 +502,7 @@ function App() {
                         type="color"
                         value={settings.fontColor}
                         onChange={(e) => setSettings({ ...settings, fontColor: e.target.value })}
-                        className="mt-1 block w-full h-10"
+                        className="block w-full h-10 mt-1"
                       />
                     </div>
                   </div>
@@ -508,10 +510,10 @@ function App() {
 
                 {/* Layout Settings */}
                 <div>
-                  <h3 className="text-lg font-medium flex items-center gap-2">
+                  <h3 className="flex items-center gap-2 text-lg font-medium">
                     <Layout size={20} /> Layout
                   </h3>
-                  <div className="mt-3 grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-3 gap-2 mt-3">
                     {(['icon-left', 'icon-top', 'icon-right'] as const).map((layout) => (
                       <button
                         key={layout}
@@ -537,7 +539,7 @@ function App() {
 
                 {/* Icon Settings */}
                 <div>
-                  <h3 className="text-lg font-medium flex items-center gap-2">
+                  <h3 className="flex items-center gap-2 text-lg font-medium">
                     <Image size={20} /> Icon Settings
                   </h3>
                   <div className="mt-3 space-y-4">
@@ -549,7 +551,7 @@ function App() {
                         max="96"
                         value={settings.iconSize}
                         onChange={(e) => setSettings({ ...settings, iconSize: Number(e.target.value) })}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                       />
                     </div>
                     <div>
@@ -558,7 +560,7 @@ function App() {
                         type="color"
                         value={settings.shapeColor}
                         onChange={(e) => setSettings({ ...settings, shapeColor: e.target.value })}
-                        className="mt-1 block w-full h-10"
+                        className="block w-full h-10 mt-1"
                       />
                     </div>
                     <div>
@@ -569,7 +571,7 @@ function App() {
                         max="100"
                         value={settings.opacity}
                         onChange={(e) => setSettings({ ...settings, opacity: Number(e.target.value) })}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                       />
                     </div>
                     <div>
@@ -580,7 +582,7 @@ function App() {
                         max="180"
                         value={settings.rotation}
                         onChange={(e) => setSettings({ ...settings, rotation: Number(e.target.value) })}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                       />
                     </div>
                   </div>
@@ -588,7 +590,7 @@ function App() {
 
                 {/* Background Settings */}
                 <div>
-                  <h3 className="text-lg font-medium flex items-center gap-2">
+                  <h3 className="flex items-center gap-2 text-lg font-medium">
                     <PaintBucket size={20} /> Background
                   </h3>
                   <div className="mt-3">
@@ -606,13 +608,13 @@ function App() {
             {step === 4 && (
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-medium mb-4">Download Your Logo</h3>
-                  <p className="text-gray-600 mb-6">Your logo is ready! Choose your preferred format and download.</p>
+                  <h3 className="mb-4 text-lg font-medium">Download Your Logo</h3>
+                  <p className="mb-6 text-gray-600">Your logo is ready! Choose your preferred format and download.</p>
                   
                   <div className="space-y-4">
                     <button
                       onClick={() => handleDownload('png')}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-3 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                      className="flex items-center justify-center w-full gap-2 px-4 py-3 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                     >
                       <Download size={20} />
                       Download PNG
@@ -620,7 +622,7 @@ function App() {
                     
                     <button
                       onClick={() => handleDownload('svg')}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                      className="flex items-center justify-center w-full gap-2 px-4 py-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                     >
                       <Download size={20} />
                       Download SVG
